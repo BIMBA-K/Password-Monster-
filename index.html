@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Secure is Your Password? | PasswordMonster</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
+</head>
+
+<body>
+    <header class="top-nav">
+        <div class="container top-nav-container">
+            <div class="logo">PasswordMonster</div>
+        </div>
+    </header>
+
+    <div class="hero-section">
+        <h1>How Secure is Your Password?</h1>
+    </div>
+
+    <main class="container main-content">
+        <h2 class="section-title">Take the Password Test</h2>
+
+        <div class="input-header">
+            <span class="tip"><strong>Tip:</strong> Try to make your passwords at least 15 characters long</span>
+            <label class="show-password">
+                Show password: <input type="checkbox" id="toggle-visibility">
+            </label>
+        </div>
+
+        <div class="password-input-container" id="input-container">
+            <input type="password" id="password-input">
+            <div class="strength-bar" id="strength-bar">
+                <span id="strength-text"></span>
+            </div>
+        </div>
+
+        <div class="criteria-section" id="criteria-section">
+            <span class="criteria-label"><strong><span id="char-count">0</span> characters containing:</strong></span>
+            <div class="criteria-list">
+                <span id="req-lowercase" class="criteria-item">Lower case</span>
+                <span id="req-uppercase" class="criteria-item">Upper case</span>
+                <span id="req-number" class="criteria-item">Numbers</span>
+                <span id="req-special" class="criteria-item">Symbols</span>
+            </div>
+        </div>
+
+        <div class="time-to-crack-section" id="time-to-crack-section" style="display: none;">
+            <p class="time-label">Time to crack your password:</p>
+            <p class="time-value" id="time-value"></p>
+        </div>
+
+        <div class="review-section" id="review-section" style="display: none;">
+            <p><strong>Review:</strong> <span id="review-text"></span></p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p><strong>Your passwords are never stored. Even if they were, we have no idea who you are!</strong></p>
+        <p
+            style="margin-top: 15px; font-size: 1.2rem; font-weight: 700; color: var(--text-main); letter-spacing: 0.5px;">
+            Built by <span style="background: var(--hero-gradient);
+                 -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Bimba</span></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

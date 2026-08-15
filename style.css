@@ -1,0 +1,327 @@
+:root {
+    --bg-color: #0f172a;
+    --nav-bg: rgba(15, 23, 42, 0.85);
+    --hero-gradient: linear-gradient(135deg, #6366f1, #a855f7, #ec4899);
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --surface-bg: #1e293b;
+    --border-default: #334155;
+    
+    /* Strength Colors - vivid for dark mode */
+    --color-very-weak: #fb7185; /* Rose */
+    --color-weak: #fb923c; /* Orange */
+    --color-medium: #facc15; /* Yellow */
+    --color-strong: #4ade80; /* Green */
+    --color-very-strong: #2dd4bf; /* Teal */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Open Sans', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Top Nav */
+.top-nav {
+    background-color: var(--nav-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-default);
+    padding: 16px 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.top-nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 800;
+    background: var(--hero-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+}
+
+/* Hero Section */
+.hero-section {
+    background: var(--surface-bg);
+    border-bottom: 1px solid var(--border-default);
+    text-align: center;
+    padding: 70px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle at center, rgba(99, 102, 241, 0.1), transparent 60%);
+    pointer-events: none;
+}
+
+.hero-section h1 {
+    font-size: 3.8rem;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    color: var(--text-main);
+    position: relative;
+    z-index: 1;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding-top: 60px;
+    max-width: 760px;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: var(--text-main);
+    letter-spacing: -0.5px;
+}
+
+.input-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    font-size: 1rem;
+}
+
+.tip {
+    color: var(--text-muted);
+}
+.tip strong {
+    color: var(--text-main);
+}
+
+.show-password {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.show-password:hover {
+    color: var(--text-main);
+}
+
+.show-password input[type="checkbox"] {
+    accent-color: #a855f7;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.password-input-container {
+    border: 2px solid var(--border-default);
+    background: var(--bg-color);
+    border-radius: 16px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#password-input {
+    width: 100%;
+    padding: 24px 20px;
+    font-size: 2.2rem;
+    border: none;
+    outline: none;
+    text-align: center;
+    letter-spacing: 6px;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    background: transparent;
+    color: var(--text-main);
+}
+
+#password-input::placeholder {
+    color: var(--border-default);
+    letter-spacing: 0;
+    font-family: 'Inter', 'Open Sans', sans-serif;
+    font-size: 1.2rem;
+}
+
+.strength-bar {
+    height: 0;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0f172a; /* Dark text on bright color bar for contrast */
+    font-weight: 700;
+    font-size: 1rem;
+    transition: background-color 0.3s, height 0.3s;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Make strength bar expand when it has text */
+.strength-bar:not(:empty) {
+    height: 44px;
+}
+
+/* Criteria Section */
+.criteria-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    font-size: 1rem;
+    font-weight: 500;
+    background: var(--surface-bg);
+    padding: 24px;
+    border-radius: 16px;
+    border: 1px solid var(--border-default);
+}
+
+.criteria-label {
+    margin-right: 30px;
+    color: var(--text-main);
+}
+
+.criteria-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.criteria-item {
+    color: var(--border-default); /* Dimmer by default */
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+.criteria-item.active {
+    color: var(--color-strong); /* Emerald green when active */
+    text-shadow: 0 0 12px rgba(74, 222, 128, 0.3);
+}
+
+/* Time to crack section */
+.time-to-crack-section {
+    text-align: center;
+    margin-bottom: 30px;
+    background: var(--surface-bg);
+    padding: 40px;
+    border-radius: 16px;
+    border: 1px solid var(--border-default);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.time-to-crack-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--hero-gradient);
+}
+
+.time-label {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.time-value {
+    font-size: 4rem;
+    font-weight: 800;
+    color: var(--text-main);
+    letter-spacing: -1.5px;
+    background: var(--hero-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.2;
+}
+
+/* Review Section */
+.review-section {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 60px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    padding: 0 20px;
+}
+
+.review-section strong {
+    color: var(--text-main);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-top: auto;
+    border-top: 1px solid var(--border-default);
+}
+
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.8rem;
+    }
+    
+    .criteria-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-section {
+        padding: 50px 20px;
+    }
+
+    .hero-section h1 {
+        font-size: 2.2rem;
+    }
+    
+    .input-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .time-value {
+        font-size: 3rem;
+    }
+}
